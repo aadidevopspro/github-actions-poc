@@ -23,7 +23,7 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - name: Docker Build
-        run: echo ${{ env.DOCKER_URL }}/${{ var.DOCKER_USERNAME }}
+        run: echo ${{ env.DOCKER_URL }}/{{var.DOCKER_USERNAME}}
       - name: Docker Login
         run: echo ${{ secrets.DOCKER_PASSWORD }}
       - name: Sleep for 5 seconds
