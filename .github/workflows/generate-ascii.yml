@@ -7,7 +7,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4.1.1
       - name: Execute Shell Script
-        run: ./acsii-arwork.sh  
+        run: |
+          chmod +x ./acsii-arwork.sh 
+          ./acsii-arwork.sh  
       # - name: Install Cowsay
       #   run:  sudo apt-get install cowsay -y
       # - name: Execute Cowsay CMD
