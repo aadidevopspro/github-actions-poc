@@ -1,0 +1,40 @@
+name : Third Example App
+on : push
+env:
+ DOCKER_URL: "docker.io"
+ DOCKER_USERNAME: "aadidevopspro"
+jobs:
+   build_job:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Docker Build
+        run: echo {{DOCKER_URL}}/{{DOCKER_USERNAME}}
+      - name: Docker Login
+        run: echo {{DOCKER_PASSWORD}}
+      - name: Docker Push
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-artifact-file
+          path: dragon.txt     
+      - name: Sleep for 10 seconds
+        run: sleep 10
+   test_job:
+     needs: build_job
+     runs-on: ubuntu-latest
+     steps:
+      - name: Docker Build
+        run: echo {{DOCKER_URL}}/{{var.DOCKER_USERNAME}}
+      - name: Docker Login
+        run: echo {{DOCKER_PASSWORD}}
+      - name: Sleep for 5 seconds
+        run: sleep 5
+   deploy_job:
+     needs: test_job
+     runs-on: ubuntu-latest
+     steps:
+      - name: Docker Build
+        run: echo {{DOCKER_URL}}/{{DOCKER_USERNAME}}
+      - name: Docker Login
+        run: echo {{secrets.DOCKER_PASSWORD}}
+      - name: Sleep for 5 seconds
+        run: sleep 5
