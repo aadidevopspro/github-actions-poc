@@ -6,16 +6,18 @@ jobs:
      steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.1.1
-      - name: Install Cowsay
-        run:  sudo apt-get install cowsay -y
-      - name: Execute Cowsay CMD
-        run:  cowsay -f dragon "Run for cover.... IAM DRAGON RAWR..."  >> dragon.txt
-      - name: Test file exists
-        run:  grep -i "dragon" dragon.txt
-      - name: Read File
-        run:  cat dragon.txt
-      - name: Checkout Repo Files
-        run:  ls -ltra
+      - name: Execute Shell Script
+        run: ./acsii-arwork.sh  
+      # - name: Install Cowsay
+      #   run:  sudo apt-get install cowsay -y
+      # - name: Execute Cowsay CMD
+      #   run:  cowsay -f dragon "Run for cover.... IAM DRAGON RAWR..."  >> dragon.txt
+      # - name: Test file exists
+      #   run:  grep -i "dragon" dragon.txt
+      # - name: Read File
+      #   run:  cat dragon.txt
+      # - name: Checkout Repo Files
+      #   run:  ls -ltra
     #   - name: List Files
     #     run: ls
     #   - name: Read File
